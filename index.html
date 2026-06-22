@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engagement Review — Mindvalley × Talking Heads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F2EB;
+    --surface:#FBFAF5;
+    --ink:#1B1B18;
+    --muted:#57564E;
+    --faint:#8E8C81;
+    --green:#244A3B;
+    --green-soft:#3A6354;
+    --amber:#9A6712;
+    --hair:#D9D4C6;
+    --hair-strong:#C6C0AF;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:clamp(28px,6vw,76px) clamp(20px,5vw,64px) 80px;
+    opacity:0;
+    transform:translateY(10px);
+    animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){
+    .wrap{animation:none;opacity:1;transform:none;}
+  }
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin:0;
+  }
+
+  /* ---- memo header ---- */
+  .memo{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px 40px;
+    padding-bottom:22px;
+    margin-bottom:34px;
+    border-bottom:1.5px solid var(--ink);
+  }
+  .memo div{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.04em;color:var(--muted);}
+  .memo b{color:var(--ink);font-weight:500;}
+
+  h1{
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:500;
+    font-size:clamp(2.3rem,5.4vw,3.9rem);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin:.5em 0 .34em;
+    max-width:16ch;
+  }
+
+  .standfirst{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:clamp(1.12rem,2.3vw,1.4rem);
+    line-height:1.5;
+    color:var(--muted);
+    font-style:italic;
+    max-width:54ch;
+    margin:0 0 8px;
+  }
+
+  section{margin-top:clamp(46px,7vw,82px);}
+
+  .sec-label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--faint);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--hair);}
+
+  h2{
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:500;
+    font-size:clamp(1.7rem,3.4vw,2.4rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin:0 0 .5em;
+  }
+
+  p{margin:0 0 1.05em;}
+  p.lead{font-size:1.06rem;max-width:62ch;}
+  .muted{color:var(--muted);}
+  strong{font-weight:600;}
+
+  /* ---- the ledger ---- */
+  .ledger{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1.5px solid var(--ink);
+    background:var(--surface);
+    margin:30px 0 14px;
+  }
+  .col{padding:26px clamp(18px,2.4vw,30px) 30px;}
+  .col.left{border-right:1.5px solid var(--ink);}
+  .col-head{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.7rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    padding-bottom:14px;
+    margin-bottom:18px;
+    border-bottom:1px solid var(--hair-strong);
+  }
+  .col.left .col-head{color:var(--ink);}
+  .col.right .col-head{color:var(--amber);}
+
+  .item{
+    display:flex;
+    gap:11px;
+    padding:7px 0;
+    font-size:.96rem;
+    line-height:1.4;
+  }
+  .item .tick{color:var(--green);flex:none;font-family:"IBM Plex Mono",monospace;font-size:.85rem;line-height:1.5;}
+  .right .item .tick{color:var(--amber);}
+
+  .void{
+    margin-top:14px;
+    padding-top:16px;
+    border-top:1px dashed var(--hair-strong);
+  }
+  .void .vline{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.82rem;
+    color:var(--faint);
+    padding:5px 0;
+    display:flex;
+    gap:11px;
+  }
+  .void .vline span:first-child{color:var(--hair-strong);}
+
+  .ledger-note{
+    font-family:"Newsreader",Georgia,serif;
+    font-style:italic;
+    font-size:1.18rem;
+    color:var(--green);
+    margin:0;
+    padding-left:2px;
+  }
+
+  /* ---- position pull ---- */
+  .position{
+    border-left:3px solid var(--green);
+    padding:4px 0 4px 26px;
+    margin:30px 0 0;
+    max-width:60ch;
+  }
+  .position p{font-size:1.08rem;}
+  .position p:last-child{margin-bottom:0;}
+
+  /* ---- options ---- */
+  .fork{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    margin-top:30px;
+  }
+  .card{
+    background:var(--surface);
+    border:1.5px solid var(--ink);
+    padding:clamp(24px,3vw,36px);
+    display:flex;
+    flex-direction:column;
+  }
+  .card.b{background:#22463760;background:linear-gradient(180deg,#EAF0EC,#F3F5F0);border-color:var(--green);}
+  .opt-tag{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.7rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:10px;
+  }
+  .card.b .opt-tag{color:var(--green-soft);}
+  .card h3{
+    font-family:"Newsreader",Georgia,serif;
+    font-weight:500;
+    font-size:1.62rem;
+    line-height:1.06;
+    margin:0 0 4px;
+  }
+  .card .mode{
+    font-family:"Newsreader",Georgia,serif;
+    font-style:italic;
+    color:var(--muted);
+    font-size:1.02rem;
+    margin-bottom:18px;
+  }
+  .block-label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.68rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin:18px 0 9px;
+  }
+  .card ul{list-style:none;margin:0;padding:0;}
+  .card li{
+    position:relative;
+    padding:6px 0 6px 19px;
+    font-size:.95rem;
+    line-height:1.45;
+  }
+  .card li::before{
+    content:"";
+    position:absolute;
+    left:0;top:13px;
+    width:6px;height:6px;
+    background:var(--green);
+  }
+  .card.a li::before{background:var(--muted);}
+  .pay{
+    margin-top:auto;
+    padding-top:20px;
+    border-top:1px solid var(--hair-strong);
+  }
+  .pay .block-label{margin-top:0;}
+  .pay p{font-size:.95rem;margin:0;}
+  .rate{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:1.5rem;
+    color:var(--ink);
+    display:block;
+    margin-bottom:4px;
+  }
+
+  /* ---- close ---- */
+  .close{
+    margin-top:clamp(46px,7vw,80px);
+    border-top:1.5px solid var(--ink);
+    padding-top:34px;
+  }
+  .close .kicker{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:clamp(1.3rem,2.8vw,1.75rem);
+    line-height:1.34;
+    font-style:italic;
+    max-width:50ch;
+    margin:0 0 30px;
+  }
+  .sign{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.04em;color:var(--muted);line-height:1.7;}
+  .sign b{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:1rem;letter-spacing:0;color:var(--ink);font-weight:600;}
+
+  @media (max-width:720px){
+    body{font-size:16px;}
+    .ledger,.fork{grid-template-columns:1fr;}
+    .col.left{border-right:none;border-bottom:1.5px solid var(--ink);}
+  }
+
+  @media print{
+    :root{--paper:#fff;--surface:#fff;}
+    body{font-size:11pt;}
+    .wrap{animation:none;opacity:1;transform:none;max-width:none;padding:0;}
+    .card,.ledger{break-inside:avoid;}
+    section{margin-top:34px;}
+    .card.b{background:#fff;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="memo">
+    <div><b>FROM</b>&nbsp; Marisha Lakhiani · Mindvalley</div>
+    <div><b>TO</b>&nbsp; Saf · Talking Heads</div>
+    <div><b>RE</b>&nbsp; Engagement structure</div>
+    <div><b>DATE</b>&nbsp; June 2026</div>
+  </div>
+
+  <p class="eyebrow">Engagement review</p>
+  <h1>What am I actually paying for?</h1>
+  <p class="standfirst">I've read the agreement and the expectation-setting document closely. Here's how it reads to me — and two clean ways I'm open to moving forward.</p>
+
+  <section>
+    <div class="sec-label">01 — How the agreement reads</div>
+    <h2>It's written like an editing contract, not an agency one</h2>
+    <p class="lead">Nearly the entire document describes what <em>we</em> owe <em>you</em>. Every one of those commitments is concrete and enforceable. When I look for the equivalent on your side, I find one countable obligation: four edited videos a month. Everything else — "solid strategic direction," "responsibility for the outcome" — is language, not accountability. And the results are excused before we even begin: "not a guarantee," "1 in 10 videos," "152 videos to reach 10k."</p>
+
+    <div class="ledger">
+      <div class="col left">
+        <div class="col-head">Defined for us — the client</div>
+        <div class="item"><span class="tick">→</span><span>Pay six months upfront</span></div>
+        <div class="item"><span class="tick">→</span><span>Organise and run filming days</span></div>
+        <div class="item"><span class="tick">→</span><span>Deliver a Brain Dump Loom per video</span></div>
+        <div class="item"><span class="tick">→</span><span>Show up camera-ready, on script</span></div>
+        <div class="item"><span class="tick">→</span><span>Provide footage by the Friday cutoff</span></div>
+        <div class="item"><span class="tick">→</span><span>Hit 48-hour feedback windows</span></div>
+        <div class="item"><span class="tick">→</span><span>Name one decision-maker</span></div>
+        <div class="item"><span class="tick">→</span><span>Trust the process for 90 days</span></div>
+        <div class="item"><span class="tick">→</span><span>Expect videos to miss</span></div>
+      </div>
+      <div class="col right">
+        <div class="col-head">Defined for you — the agency</div>
+        <div class="item"><span class="tick">→</span><span>Deliver four edited videos a month</span></div>
+        <div class="void">
+          <div class="vline"><span>—</span><span>No agreed success metric</span></div>
+          <div class="vline"><span>—</span><span>No reporting accountability</span></div>
+          <div class="vline"><span>—</span><span>No defined strategy deliverable</span></div>
+          <div class="vline"><span>—</span><span>No consequence for under-delivery</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="ledger-note">One side carries every obligation. The other carries an edit queue.</p>
+  </section>
+
+  <section>
+    <div class="sec-label">02 — Where I stand</div>
+    <h2>I'll own my side. I need to see yours.</h2>
+    <div class="position">
+      <p>I'm not avoiding my responsibilities. I'll own the filming cadence, the Brain Dumps, footage on time, and the feedback windows — fully and without excuses.</p>
+      <p>What I can't keep doing is paying agency rates for editing with no accountability attached to it. So here are two ways to fix that. Pick the one that fits how you actually want to operate.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">03 — Two ways forward</div>
+    <h2>Choose the model. Then we'll paper it properly.</h2>
+    <div class="fork">
+
+      <div class="card a">
+        <p class="opt-tag">Option A</p>
+        <h3>Editing partner</h3>
+        <p class="mode">You focus on output. We own the growth.</p>
+        <p class="muted" style="font-size:.95rem;margin:0;">Operate as a production partner. We keep strategy, ideation and distribution in-house. You produce excellent videos, and we pay for exactly what you deliver.</p>
+
+        <p class="block-label">What you deliver</p>
+        <ul>
+          <li>A finished, optimised video per accepted delivery</li>
+          <li>Thumbnail that actually looks like the talent</li>
+          <li>Title, tags, end screen — and the CTA in the first two lines of the description</li>
+        </ul>
+
+        <div class="pay">
+          <p class="block-label">How we pay</p>
+          <span class="rate">£3,000 / video</span>
+          <p class="muted">Scales with output — four this month, we pay four; six, we pay six; two, we pay two. No retainer, no upfront. Billed per accepted delivery.</p>
+        </div>
+      </div>
+
+      <div class="card b">
+        <p class="opt-tag">Option B</p>
+        <h3>Growth agency</h3>
+        <p class="mode">You own the channel — and the retainer is matched by real commitments.</p>
+        <p class="muted" style="font-size:.95rem;margin:0;">Operate as a true agency. You own the channel's growth, not just the edit. The retainer stays — but it's tied to deliverables on your side, defined with the same precision as ours.</p>
+
+        <p class="block-label">What you commit to</p>
+        <ul>
+          <li>One north-star metric, locked at kickoff — subs, watch time, qualified traffic or leads. We pick it together.</li>
+          <li>A monthly performance review against it</li>
+          <li>Accountability on what you control: CTR, average view duration, packaging, and publishing consistency on the footage we supply</li>
+          <li>Active strategy: title &amp; thumbnail testing, description and CTA optimisation, idea pipeline, format and trend research</li>
+          <li>A 48-hour escalation SLA — if our inputs fall short, you flag it and propose a fix. No silent under-delivery.</li>
+        </ul>
+
+        <div class="pay">
+          <p class="block-label">How we pay</p>
+          <span class="rate">Monthly retainer</span>
+          <p class="muted">Billed monthly, in arrears. No six-month prepay.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="close">
+    <p class="kicker">Either model works for me. What doesn't work is paying for a growth partnership and receiving an editing service with nothing on the line.</p>
+    <p class="sign">
+      <b>Marisha Lakhiani</b>
+      Chief Growth Officer · Mindvalley
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
