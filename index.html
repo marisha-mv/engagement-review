@@ -186,6 +186,26 @@
   .position p{font-size:1.08rem;}
   .position p:last-child{margin-bottom:0;}
 
+  /* ---- crux panel ---- */
+  .crux{
+    background:var(--green);
+    color:#CBD2C9;
+    padding:clamp(28px,4.6vw,52px);
+    margin-top:24px;
+  }
+  .crux h2{color:#fff;margin-top:0;}
+  .crux p{color:#CBD2C9;max-width:62ch;}
+  .crux .pull{
+    font-family:"Newsreader",Georgia,serif;
+    font-size:clamp(1.4rem,3vw,2rem);
+    line-height:1.26;
+    letter-spacing:-.01em;
+    color:#fff;
+    max-width:36ch;
+    margin:26px 0 0;
+  }
+  .crux .pull strong{color:#fff;font-weight:600;}
+
   /* ---- options ---- */
   .fork{
     display:grid;
@@ -292,6 +312,8 @@
     .card,.ledger{break-inside:avoid;}
     section{margin-top:34px;}
     .card.b{background:#fff;}
+    .crux{background:#fff !important;color:var(--ink) !important;border:1.5px solid var(--green);}
+    .crux h2,.crux p,.crux .pull,.crux .pull strong{color:var(--ink) !important;}
   }
 </style>
 </head>
@@ -306,7 +328,7 @@
   </div>
 
   <p class="eyebrow">Engagement review</p>
-  <h1>What am I actually paying for?</h1>
+  <h1>Let's define what I'm paying for</h1>
   <p class="standfirst">I've read the agreement and the expectation-setting document closely. Here's how it reads to me — and two clean ways I'm open to moving forward.</p>
 
   <section>
@@ -342,7 +364,16 @@
   </section>
 
   <section>
-    <div class="sec-label">02 — Where I stand</div>
+    <div class="sec-label">02 — Where it actually breaks</div>
+    <div class="crux">
+      <h2>You're in the room when it breaks</h2>
+      <p>You come to Vishen's house every month to direct the shoot — and it still walks away with two videos instead of four. Not because the footage never arrives, but because the day isn't run to a plan. No clear target for the session, no shot list, no pressure to hit the number, no "here's what we're filming today and what each one is for." Without that structure the shoot runs loose, Vishen stays random, and we leave with half a month of content. Running the filming day so it actually produces four is the agency's job — and it's breaking under your direction, not ours.</p>
+      <p class="pull">And four isn't arbitrary. YouTube compounds on a roughly weekly cadence — <strong>a video a month can't grow a channel.</strong> A shoot that yields two isn't a small miss. It's the difference between a channel that starts and one that never does.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">03 — Where I stand</div>
     <h2>I'll own my side. I need to see yours.</h2>
     <div class="position">
       <p>I'm not avoiding my responsibilities. I'll own the filming cadence, the Brain Dumps, footage on time, and the feedback windows — fully and without excuses.</p>
@@ -351,7 +382,7 @@
   </section>
 
   <section>
-    <div class="sec-label">03 — Two ways forward</div>
+    <div class="sec-label">04 — Two ways forward</div>
     <h2>Choose the model. Then we'll paper it properly.</h2>
     <div class="fork">
 
@@ -385,6 +416,7 @@
         <ul>
           <li>One north-star metric, locked at kickoff — subs, watch time, qualified traffic or leads. We pick it together.</li>
           <li>A monthly performance review against it</li>
+          <li>A tight filming-day plan — clear targets and a shot list so every shoot leaves with four videos, not two</li>
           <li>Accountability on what you control: CTR, average view duration, packaging, and publishing consistency on the footage we supply</li>
           <li>Active strategy: title &amp; thumbnail testing, description and CTA optimisation, idea pipeline, format and trend research</li>
           <li>A 48-hour escalation SLA — if our inputs fall short, you flag it and propose a fix. No silent under-delivery.</li>
